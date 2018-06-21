@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+
+
+ul li{
+  list-style: none;
+  background: gray;
+  margin: 2px;
+  border-radius: 1px;
+  padding: 5px;
+}
+.deleteMe {
+  float: right;
+}
