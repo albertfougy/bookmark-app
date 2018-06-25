@@ -2,6 +2,7 @@
 
 /* global Item bookmark-list*/
 
+// local storage
 const bookmark = (function () {
 // const validateName
 
