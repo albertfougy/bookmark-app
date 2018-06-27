@@ -1,31 +1,70 @@
 'use strict';
 
-/* global Item bookmark-list*/
+/* global  bookmark-list bookmarkList */
 
-// local storage
-const store = (function () {
-// const validateName
+// // local storage
+// const store = (function () {
+
+//   // const addItem = function(item) {
+//   //   this.items.push(Object.assign(item, {expanded: false}));
+//   // };
+
+//   const addItem = function(Item) {
+//     Item.validateName(name);
+//     api.createItem(item);
+//     try{
+//       api.createItem(item, response => console.log(response));
+//     }catch(e) {
+//       console.log(e.message);
+//     }
+//   };
+
+//   // Find and delete item from AJAX
+//   const findAndDelete = function(id) {
+//     this.items = this.items.filter(item => item.id !== id);
+//   };
+
+//   return {
+//     items:[],
+//     add: false,
+
+//     addItem,
+//     findAndDelete,
+
+//   };
+
+// }() );
+
+const store = (function() {
 
   const addItem = function(item) {
-    Item.validateName(title);
-    api.createItem(item);
-    try{
-      api.createItem(item, response => console.log(response));
-    }catch(e) {
-      console.log(e.message);
-    }
+    this.items.push(Object.assign(item, {expanded: false}));
   };
 
-  // Find and delete item from AJAX
-  const findAndDelete = function(id) {
+  const findById = function(id) {
+    return this.items.find(item => item.id === id);
+  };
 
+  const findAndDelete = function(id) {
     this.items = this.items.filter(item => item.id !== id);
   };
 
+
+  // function filterByRating(val) {
+  //   this.items = this.items.filter( itm => {
+  //     return itm.rating >= val;
+  //   });
+  // }
+
   return {
+    items: [],
+    adding: false,
+    error: null,
+
     addItem,
+    findById,
     findAndDelete,
 
   };
 
-}() );
+}());

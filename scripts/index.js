@@ -1,8 +1,5 @@
 'use strict';
-/* global  api store  bookmarkList Item */
-
-
-
+/* global  api store  bookmarkList  */
 
 $(document).ready(function() {
 
