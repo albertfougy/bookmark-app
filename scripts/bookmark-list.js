@@ -32,40 +32,39 @@ const bookmarkList = (function(){
   // Function to add bookmark after add button. Take function from index.js
 
 
+  const handleAddBookmarkAfterClick = function(){
+    $('#bookmark-add-btn').on('click', event => {
+      const title = $('#js-add-bookmark input[name="bookmark-title"]')[0].value;
+      const url = $('#js-add-bookmark input[name="bookmark-url"]')[0].value;
+      const desc = $('#js-add-bookmark textarea[name="bookmark-desc"]')[0].value;
+      const rating = parseInt($('#bookmark-rating')[0].value);
 
-  $('#bookmark-add-btn').on('click', event => {
-    const title = $('#js-add-bookmark input[name="bookmark-title"]')[0].value;
-    const url = $('#js-add-bookmark input[name="bookmark-url"]')[0].value;
-    const desc = $('#js-add-bookmark textarea[name="bookmark-desc"]')[0].value;
-    const rating = parseInt($('#bookmark-rating')[0].value);
 
+      // ToDo Validation
+      // title ( use simple string methods to validate)
+      // url(must start with http(s): Use Regex
 
-    // ToDo Validation
-    // title ( use simple string methods to validate)
-    // url(must start with http(s): Use Regex
-
-    api.createItem({title, url, desc, rating}, response => {
-      console.log('Bookmark created successfully', response);
-      bookmarkList.render();
+      api.createItem({title, url, desc, rating}, response => {
+        console.log('Bookmark created successfully', response);
+        bookmarkList.render();
+      });
     });
-  });
-
+  };
 
   // Function to expand the view
 
   // Function to filter by rating
 
-// re-write bookmark string
+  // re-write bookmark string
 
   function render() {
+    handleAddBookmarkAfterClick();
     api.getItems(items => {
       let  bookmarkListItemsString =''  ;
       items.forEach(item => {
-
         //
         bookmarkListItemsString += generateItemElement(item);
       });
-
       // insert element into the DOM
       $('.js-bookmark-list').html(bookmarkListItemsString);
     });
@@ -92,14 +91,14 @@ const bookmarkList = (function(){
         render();
       });
     });
-  }
+  };
 
   handleDeleteItemClicked();
 
 
   const bindEventListeners = function (){
     handleDeleteItemClicked();
-    addBookmarkAfterClicked();
+    handleAddBookmarkAfterClick();
   };
 
 
