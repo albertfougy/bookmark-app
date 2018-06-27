@@ -3,14 +3,14 @@
 /* global Item bookmark-list*/
 
 // local storage
-const bookmark = (function () {
+const store = (function () {
 // const validateName
 
   const addItem = function(item) {
     Item.validateName(title);
     api.createItem(item);
     try{
-      api.createItem(item, response => console.log(reponse));
+      api.createItem(item, response => console.log(response));
     }catch(e) {
       console.log(e.message);
     }
@@ -19,12 +19,13 @@ const bookmark = (function () {
   // Find and delete item from AJAX
   const findAndDelete = function(id) {
 
-  this.items = this.items.filter(item => item.id !== id);
-};
+    this.items = this.items.filter(item => item.id !== id);
+  };
 
-return {
+  return {
+    addItem,
     findAndDelete,
-    addItem
-}
+
+  };
 
 }() );

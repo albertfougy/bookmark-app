@@ -1,6 +1,6 @@
 'use strict';
 
-/* global  bookmark bookmark-list */
+/* global store bookmark-list */
 
 
 // IIFE

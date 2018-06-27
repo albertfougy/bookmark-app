@@ -1,9 +1,10 @@
 'use strict';
 
-/* global bookmark */
+/* global store api */
 
 const bookmarkList = (function(){
 
+  // generate the the item elements
   function generateItemElement(item) {
     return `
     <li class="js-item-element" data-item-id="${item.id}">
@@ -14,8 +15,46 @@ const bookmarkList = (function(){
         </button>
       </div>
     </li>`;
-
   }
+
+
+
+
+  // function generate expanded view
+
+
+  // function to show the bookmark view
+
+  // Function to create the bookmark after click
+
+  // Function to handle the closed bookmark after expanded view
+
+  // Function to add bookmark after add button. Take function from index.js
+
+
+
+  $('#bookmark-add-btn').on('click', event => {
+    const title = $('#js-add-bookmark input[name="bookmark-title"]')[0].value;
+    const url = $('#js-add-bookmark input[name="bookmark-url"]')[0].value;
+    const desc = $('#js-add-bookmark textarea[name="bookmark-desc"]')[0].value;
+    const rating = parseInt($('#bookmark-rating')[0].value);
+
+
+    // ToDo Validation
+    // title ( use simple string methods to validate)
+    // url(must start with http(s): Use Regex
+
+    api.createItem({title, url, desc, rating}, response => {
+      console.log('Bookmark created successfully', response);
+      bookmarkList.render();
+    });
+  });
+
+
+  // Function to expand the view
+
+  // Function to filter by rating
+
 
 
   function render() {
@@ -30,13 +69,15 @@ const bookmarkList = (function(){
 
 
   function getItemIdFromElement(item) {
-  return $(item)
-    .closest('.js-item-element')
-    .data('item-id');
-}
+    return $(item)
+      .closest('.js-item-element')
+      .data('item-id');
+  }
 
   // Delete item from list
-  function handleDeleteItemClicked() {
+
+
+  const handleDeleteItemClicked = function () {
     // like in `handleItemCheckClicked`, we use event delegation
     $('.js-bookmark-list').on('click', '.js-item-delete', event => {
       // get the index of the item in api.items
@@ -44,16 +85,24 @@ const bookmarkList = (function(){
       console.log(id);
       // delete the item
       api.deleteItem( id, function() {
-              render();
+        render();
       });
     });
   }
 
+  handleDeleteItemClicked();
+
+
+  const bindEventListeners = function (){
+    handleDeleteItemClicked();
+    addBookmarkAfterClicked();
+  };
 
 
 
   return {
-    render: render,
-    handleDeleteItemClicked
+    bindEventListeners,
+    render,
+
   };
 }());
