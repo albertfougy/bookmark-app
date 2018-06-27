@@ -55,14 +55,18 @@ const bookmarkList = (function(){
 
   // Function to filter by rating
 
-
+// re-write bookmark string
 
   function render() {
     api.getItems(items => {
       let  bookmarkListItemsString =''  ;
       items.forEach(item => {
+
+        //
         bookmarkListItemsString += generateItemElement(item);
       });
+
+      // insert element into the DOM
       $('.js-bookmark-list').html(bookmarkListItemsString);
     });
   }

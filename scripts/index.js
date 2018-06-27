@@ -1,5 +1,21 @@
 'use strict';
-/* global  api, store bookmark-list, Item */
+/* global  api store  bookmarkList Item */
+
+
+
+
+$(document).ready(function() {
+
+  api.getItems(items=> {
+    items.forEach(item => {
+      store.addItem(item);
+    });
+    bookmarkList.render();
+  });
+  bookmarkList.bindEventListeners();
+});
+
+
 
 
 // bookmarkList.handleDeleteItemClicked();
