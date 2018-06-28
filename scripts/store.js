@@ -35,6 +35,7 @@
 
 // }() );
 
+// // local storage
 const store = (function() {
 
   const addItem = function(item) {
