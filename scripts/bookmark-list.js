@@ -23,9 +23,10 @@ const bookmarkList = (function(){
       </div>
     </li>`;
   }
+
   function generateExpandedView(item){
     return `
-      <li aria-label="click to expand bookmark"class="expand-bookmark-view js-expand-bookmark-view" data-item-id="${item.id}">
+      <li aria-label="click to expand bookmark" class="expand-bookmark-view js-expand-bookmark-view" data-item-id="${item.id}">
         <h2>${item.title}</h2>
         <form id="js-close-expanded" class="header-right js-header-right">
         <p class="expanded-stars js-expanded-stars">rating: ${item.rating} </p>
@@ -135,6 +136,15 @@ const bookmarkList = (function(){
   // }
 
 
+  // function handleFilterByRatingClicked() {
+  //   $('.js-star-rating').on('change', function(event) {
+  //     event.preventDefault();
+  //     const val = $(event.currentTarget).val();
+  //     store.filterByRating(val);
+  //     render();
+  //   });
+  // }
+
 
 
   const addBookmarkAfterClicked = function (){
@@ -159,6 +169,8 @@ const bookmarkList = (function(){
       });
     });
   };
+
+
   // js-item-element
   const handleExpandedView = function (){
     $('.js-bookmark-list').on('click', '.js-item-expand', event => {
@@ -167,8 +179,12 @@ const bookmarkList = (function(){
       $(event.currentTarget).remove();
       if(item.id === id){
         const expandView = generateExpandedView(item);
+        $('.js-item-element').hide();
         $('.js-bookmark-list').prepend(expandView);
         store.expanded = true;
+        // $('js-item-element').hide();
+
+        //render();
       }
     });
   };
@@ -181,6 +197,8 @@ const bookmarkList = (function(){
   // THE BOOKMARK LIST STRING.
 
   function render() {
+
+
     api.getItems(items => {
       let  bookmarkListItemsString =''  ;
       items.forEach(item => {
@@ -227,7 +245,20 @@ const bookmarkList = (function(){
       .data('item-id');
   };
 
+  // event.currentTarget.parentElement.parentElement
+  function handleDeleteBookmarkClicked() {
+    $('.js-bookmark-list').on('click', '.js-delete-bookmark-button', event => {
+      //const id = getItemIdFromElement(event.currentTarget.parentElement.parentElement);
+      const id = $(event.currentTarget.parentElement.parentElement).data('item-id');
+      event.preventDefault();
+      api.deleteItem(id, () => {
+        console.log(id);
+        // store.findAndDelete(id);
+        render();
+      });
 
+    });
+  }
 
   // Delete item from list
   const handleDeleteItemClicked = function () {
@@ -250,6 +281,8 @@ const bookmarkList = (function(){
     handleDeleteItemClicked();
     addBookmarkAfterClicked();
     handleExpandedView();
+    handleDeleteBookmarkClicked();
+  //  handleFilterByRatingClicked();
 
   };
 

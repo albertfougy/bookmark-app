@@ -51,20 +51,21 @@ const store = (function() {
   };
 
 
-  // function filterByRating(val) {
-  //   this.items = this.items.filter( itm => {
-  //     return itm.rating >= val;
-  //   });
-  // }
+  function filterByRating(val) {
+    this.items = this.items.filter( item => {
+      return item.rating >= val;
+    });
+  }
 
   return {
     items: [],
-    adding: false,
+    add: false,
     error: null,
 
     addItem,
     findById,
     findAndDelete,
+    filterByRating
 
   };
 

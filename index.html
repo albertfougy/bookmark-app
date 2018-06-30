@@ -23,13 +23,13 @@
       <p>
       <textarea cols="50" rows="5" type="text" name="bookmark-desc" class="js-bookmark-list-entry" placeholder="description"></textarea>
       </p>
-      <select aria-label="select a rating for the bookmark" name="bookmark-rating" id="bookmark-rating" class="js-star-rating" value="3">
+      <select aria-label="select a rating for the bookmark" name="bookmark-rating" id="bookmark-rating" class="js-star-rating" >
           <option value="selected disabled hidden">Minimum Rating</option>
-          <option value='1'>&#x2605;</option>
-          <option value='2'>&#x2605;&#x2605;</option>
-          <option value='3'>&#x2605;&#x2605;&#x2605;</option>
-          <option value='4'>&#x2605;&#x2605;&#x2605;&#x2605;</option>
-          <option value='5'>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          <option aria-label="select 1 star rating" value='1'>&#x2605;</option>
+          <option aria-label="select 2 star rating" value='2'>&#x2605;&#x2605;</option>
+          <option aria-label="select 3 star rating" value='3'>&#x2605;&#x2605;&#x2605;</option>
+          <option aria-label="select 4 star rating" value='4'>&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          <option aria-label="select 5 star rating" value='5'>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
       </select>
       <p>
       <button id='bookmark-add-btn' class'js-bookmark-add-btn'>Add + </button></p>
