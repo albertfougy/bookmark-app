@@ -6,6 +6,31 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.flex-grid {
+  display: flex;
+}
+
+@media (max-width: 400px) {
+  .flex-grid{
+    display: block;
+    .col {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+  }
+}
+
+.flex-grid {
+  margin: 0 0 20px 0;
+}
+
+h1 {
+  margin-left: 10px;
+  margin-top: 20px;
+  color: rgb(226, 232, 236);
+}
+
+
 .row {
   max-width: 1000px;
   padding-left: 20px;
@@ -13,6 +38,20 @@ body {
   margin: 0 auto;
 }
 
+.container {
+  font-size: 120%;
+  max-width: 600px;
+  min-width: 280px;
+  height: fit-content;
+  margin: 100px auto;
+  background-color: rgb(0, 155, 34);
+  border: solid 4px white;
+  border-radius: 5px;
+}
+
+.bookmark-form{
+
+}
 
  li{
   list-style: none;

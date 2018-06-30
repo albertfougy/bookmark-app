@@ -52,101 +52,6 @@ const bookmarkList = (function(){
 
 
 
-  // SECTION FOR FORM ELEMENT
-  // function generate expanded view
-  // RADIO BUTTONS INSTEAD OF STARS?
-  // SORT RATING BY NUMBERS INSTEAD OF STARS
-  // const generateCreateBookmarkView = function (item) {
-  //   return `
-  //   <li class="js-create-bookmark-view" aria-live="polite">
-  //     <h2>Create Bookmark</h2>
-  //       <form id="js-add-bookmark">
-  //         <label for="add-bookmark-title"></label>
-  //         <input class=" js-add-bookmark-title" id="add-bookmark-title" name="title" type="text" placeholder="title" required aria-label="enter bookmark">
-  //         <label for="add-bookmark-link"></label>
-  //         <input class="js-add-bookmark-link" id="add-bookmark-link" name="url" type="url" aria-label="enter a url "value="http://" placeholder="http://www.cnn.com" required>
-  //         <p>
-  //            <textarea cols="50" rows="5" type="text" name="bookmark-desc" class="js-bookmark-list-entry js-add-bookmark-desc" placeholder="description"></textarea>
-  //         </p>
-  //         <div id="js-add-star-rating">
-  //           <div class="js-rate-radio-buttons" aria-label="please select rating for new bookmark">
-  //             <fieldset>
-  //               <Legend required>STARS</Legend>
-  //               <label aria-label="select rating 5 star"for="5-stars">5</label>
-  //               <input type="radio" id="5-stars"
-  //                 name="rate" value="5" required>
-  //               <label aria-label="select rating 4 star"for="4-stars">4</label>
-  //               <input type="radio" id="4-stars"
-  //                 name="rate" value="4">
-  //               <label aria-label="select rating 3 star"for="3-stars">3</label>
-  //               <input type="radio" id="3-stars"
-  //                 name="rate" value="3">
-  //               <label aria-label="select rating 2 star"for="2-stars">2</label>
-  //               <input type="radio" id="2-stars"
-  //                 name="rate" value="2">
-  //               <label aria-label="select rating 1 star" for="1-stars">1
-  //               <input type="radio" id="1-star"
-  //                 name="rate" value="1">
-  //             </fieldset>
-  //           </div>
-  //         </div>
-  //         <div>
-  //           <button class="add-button-submit js-add-button-submit" type="submit" aria-label="click to add bookmark">ADD</button>
-  //         </div>
-  //       </form>
-  //     </li>`;
-  // };
-
-  //   const generateBookmarkHTML = function (item) {
-  //     if(item.rating)
-  //       return `
-  // <div class="col-12" aria-live="assertive" aria-label="add a bookmark" >
-  //   <!-- calling bookmark-list to replace for the DOM -->
-  //   <ul class="js-bookmark-list js-item-delete">
-  //   </ul>
-  // </div>`;
-  // }
-
-
-
-  // function to show the bookmark view
-
-  // Function to create the bookmark after click
-
-  // Function to handle the closed bookmark after expanded view
-
-
-  // FUNCTION FOR EXPANDING THE FORM
-
-
-
-  // FUNCTION TO FILTER BOOKMARKS BY RATING
-
-  // FUNCTION FOR EDITING DESCRIPTION AND RATING
-
-
-
-
-
-  // re-write bookmark string
-  // if store. add is equal to true generate the bookmark view.
-  // if(store.add) {
-  //   const bookmarkForm = generateCreateBookmarkView();
-  //   $('.js-bookmark-list').prepend(bookmarkForm);
-  // }
-
-
-  // function handleFilterByRatingClicked() {
-  //   $('.js-star-rating').on('change', function(event) {
-  //     event.preventDefault();
-  //     const val = $(event.currentTarget).val();
-  //     store.filterByRating(val);
-  //     render();
-  //   });
-  // }
-
-
-
   const addBookmarkAfterClicked = function (){
 
     $('#bookmark-add-btn').on('click', event => {
@@ -182,19 +87,12 @@ const bookmarkList = (function(){
         $('.js-item-element').hide();
         $('.js-bookmark-list').prepend(expandView);
         store.expanded = true;
-        // $('js-item-element').hide();
-
-        //render();
+        $('js-item-element').hide();
       }
     });
   };
 
 
-
-  // FUNCTION TO RENDER THE BOOKMARK LIST.
-  // MAKES SENSE TO PUT IT AT THE TOP.
-  // HAVE TO RE-FACTOR . REMOVE API.GET-ITEMS. THE ONLY THING TO USE IS
-  // THE BOOKMARK LIST STRING.
 
   function render() {
 
@@ -207,36 +105,10 @@ const bookmarkList = (function(){
 
       // insert element into the DOM
       $('.js-bookmark-list').html(bookmarkListItemsString); // IMPORTANT LINE TO KEEP
-      // ('#js-add-bookmark').show();
-      // ('#js-add-bookmark').hide();
     });
   }
 
 
-
-
-
-  // INPUT VALIDATION. MOVED FROM Item.js
-  // const Item = (function(){
-
-  //   const validateName = function(name) {
-  //     if (!name) throw new TypeError('Name must not be blank');
-  //   };
-
-  //   const create = function(name) {
-  //     return {
-  //       id: cuid(),
-  //       name,
-  //       checked: false
-  //     };
-  //   };
-
-  //   return {
-  //     validateName,
-  //     create,
-  //   };
-
-  // }());
 
 
   const getItemIdFromElement = function (item) {
@@ -282,7 +154,6 @@ const bookmarkList = (function(){
     addBookmarkAfterClicked();
     handleExpandedView();
     handleDeleteBookmarkClicked();
-  //  handleFilterByRatingClicked();
 
   };
 

@@ -10,37 +10,39 @@
   <title>Bookmarkify</title>
 </head>
 <body>
-<div class='container'>
+<div class='container flex-grid'>
+ <header role="banner" aria-live="polite">
   <div class='row'>
   <h1>Bookmarkify</h1>
   <form id="js-add-bookmark">
-      <p>
-        <input type="text" name="bookmark-title" class="js-bookmark-list-entry" placeholder="title">
-      </p>
-      <p>
-      <input type="text" name="bookmark-url" class="js-bookmark-list-entry" placeholder="http://www.mysite.com">
-      </p>
-      <p>
-      <textarea cols="50" rows="5" type="text" name="bookmark-desc" class="js-bookmark-list-entry" placeholder="description"></textarea>
-      </p>
-      <select aria-label="select a rating for the bookmark" name="bookmark-rating" id="bookmark-rating" class="js-star-rating" >
-          <option value="selected disabled hidden">Minimum Rating</option>
-          <option aria-label="select 1 star rating" value='1'>&#x2605;</option>
-          <option aria-label="select 2 star rating" value='2'>&#x2605;&#x2605;</option>
-          <option aria-label="select 3 star rating" value='3'>&#x2605;&#x2605;&#x2605;</option>
-          <option aria-label="select 4 star rating" value='4'>&#x2605;&#x2605;&#x2605;&#x2605;</option>
-          <option aria-label="select 5 star rating" value='5'>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
-      </select>
-      <p>
-      <button id='bookmark-add-btn' class'js-bookmark-add-btn'>Add + </button></p>
-  </form>
-  <hr>
+    <p>
+      <input type="text" name="bookmark-title" class="js-bookmark-list-entry" tabindex="1" placeholder="title">
+          </p>
+             <p>
+              <input type="text" name="bookmark-url" class="js-bookmark-list-entry" tabindex="1" value="http://" placeholder="http://www.mysite.com">
+              </p>
+                <p>
+                <textarea cols="19" rows="5" type="text" name="bookmark-desc" class="js-bookmark-list-entry bookmark-form" placeholder="description"></textarea>
+                </p>
+                <select aria-label="select a rating for the bookmark" name="bookmark-rating" id="bookmark-rating" class="js-star-rating" aria-activedescendant="rating-filter">
+                    <option value="selected disabled hidden">Minimum Rating</option>
+                    <option aria-label="select 1 star rating" value='1'>&#x2605;</option>
+                    <option aria-label="select 2 star rating" value='2'>&#x2605;&#x2605;</option>
+                    <option aria-label="select 3 star rating" value='3'>&#x2605;&#x2605;&#x2605;</option>
+                    <option aria-label="select 4 star rating" value='4'>&#x2605;&#x2605;&#x2605;&#x2605;</option>
+                    <option aria-label="select 5 star rating" value='5'>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+                </select>
+                <p>
+                <button id='bookmark-add-btn' class'js-bookmark-add-btn'>Add + </button></p>
+             </form>
+        </div>
   <div class="col-12" aria-live="assertive" aria-label="add a bookmark" >
     <!-- calling bookmark-list to replace for the DOM -->
     <ul class="js-bookmark-list js-item-delete">
     </ul>
   </div>
 </div>
+</header>
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
