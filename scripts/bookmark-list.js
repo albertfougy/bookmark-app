@@ -10,8 +10,17 @@ const bookmarkList = (function(){
     // ElSE this grouping
     // expand button
     return `
+
+  //   for (i = 0; i < $('.js-item-rating').length; i++) {
+  //     var elt = $('.js-item-rating')[i];
+  //     rating = parseInt(elt.innerHTML);
+  //     if (rating < maxRating) {
+  //       elt.parentNode.hidden = true;
+  //  }
+  //  }
+   ​
     <li class="js-item-element" data-item-id="${item.id}">
-      ${item.title}    &nbsp;&nbsp;rating: ${item.rating}
+      ${item.title}    &nbsp;&nbsp;rating: <span class='js-item-rating'>${item.rating}</span>
       <div class="bookmark-item-controls">
         <button class="bookmark-item-delete js-item-delete">
           <span class="button-label">delete</span>
@@ -19,10 +28,11 @@ const bookmarkList = (function(){
           <button class="bookmark-item-expand js-item-expand">
             <span class ="button-label">expand</span>
           </button>
-
       </div>
     </li>`;
   }
+
+
 
   function generateExpandedView(item){
     return `
@@ -95,7 +105,6 @@ const bookmarkList = (function(){
 
 
   function render() {
-
 
     api.getItems(items => {
       let  bookmarkListItemsString =''  ;
